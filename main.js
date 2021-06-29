@@ -1,21 +1,28 @@
 "use strick";
 
 const arrTest = [1, 3, 4, 5, 13, 20, 25, 40, 42, 53];
-const numTest = 1;
+const numTest = 53;
 
 const biSearch = (num, arr) => {
-    let i = Math.trunc(arr.length - 1 / 2);
-    console.log({ i });
+    // console.log({ num });
+    let i = Math.floor((arr.length - 1) / 2);
+    // console.log({ i });
+    let half = i;
+    // console.log({ half });
 
     const recursive = (index) => {
         if (num === arr[index]) {
             console.log(`Found in index ${index}`);
         } else if (num < arr[index]) {
-            i = i / 2;
-            recursive(Math.trunc(i));
+            half = Math.ceil(half / 2);
+            i = i - half;
+            // console.log(`< half: ${half} i: ${i}`);
+            recursive(i);
         } else if (num > arr[index]) {
-            i = i / 2;
-            recursive(Math.trunc(i));
+            half = Math.ceil(half / 2);
+            i = i + half;
+            // console.log(`> half: ${half} i: ${i}`);
+            recursive(i);
         } else {
             console.log("Something is wrong!");
         }
