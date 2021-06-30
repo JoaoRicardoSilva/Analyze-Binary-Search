@@ -15,14 +15,27 @@ A Javascript Binary Search algorithm and analyze its performance using Big O Not
         * `num > arr[i]`
             * We need to analyse only the numbers on the right of `arr[i]`, therefore `f` will be the same and `ini` will be the immediate index above `i`
 
-#### Notes:
-* num  = number that we want to find
-* We need to work only with the "original" array to conserve the right index
-
 ## Space and time complexity
 ### Space complexity O(1):
 #### Explanation:
 ...Under construction...
-### Time complexity: O(n)
+### Time complexity: O logN)
 #### Explanation:
-...Under construction...
+
+|Number of items in `arr`|Number of times that loop occurred*|
+|------------------------|----------------------------------|
+|1|0|
+|5|1|
+|10|2|
+|50|4|
+|100|5|
+|500|7|
+|1000|8|
+|5000|11|
+|10000|12|
+|50000|14|
+|10000|15|
+
+*Trying to find the last number of the array
+
+![image](https://user-images.githubusercontent.com/62359670/123954046-d6b2c680-d99f-11eb-885b-dab25f6283f6.png)
