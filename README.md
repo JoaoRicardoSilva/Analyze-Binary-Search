@@ -2,18 +2,18 @@
 A Javascript Binary Search algorithm and analyze its performance using Big O Notation.
 
 ## How the algorithm works
-1. Find the value of the item in the middle
-2. If:
-   * value === num*
-      * We found it!
-   * value < num
-      * Consider that the array is now only the first half!
-         * If you pass here more than once consider that the array is now only the first half of the part of the array that you already considered!
-      * Start over again from point one with the "new" array!
-   * value > num
-      * Consider that the array is now only the second half!
-         * If you pass here more than once consider that the array is now only the second half of the part of the array that you already considered!
-      * Start over again from point one with the "new" array!
+1. Create a function that receive two arguments: and array with sorted numbers (`arr`) and the number that we want to find (`num`)
+2. Define the start and the final index of arr
+3. Loop while `ini <= f`
+    * This condition will prevent an infinite loop if for some reason `ini` become bigger than `f`
+    * Create `i` that will be always a number in the middle of `ini` and `f`
+    * Then we have 3 options:
+        * `num === arr[i]`
+            * Stop the function and return the index
+        * `num < arr[i]`
+            * We need to analyse only the numbers on the left of `arr[i]`, therefore `ini` will be the same and `f` will be the immediate index below `i`
+        * `num > arr[i]`
+            * We need to analyse only the numbers on the right of `arr[i]`, therefore `f` will be the same and `ini` will be the immediate index above `i`
 
 #### Notes:
 * num  = number that we want to find
@@ -22,52 +22,7 @@ A Javascript Binary Search algorithm and analyze its performance using Big O Not
 ## Space and time complexity
 ### Space complexity O(1):
 #### Explanation:
-
-   	const biSearch = (num, arr) => { -> 2
-    let i = Math.floor((arr.length - 1) / 2); -> 1
-    let half = i; -> 1
-		
-		  const recursive = (index) => {
-          if (num === arr[index]) {
-          } else if (num < arr[index]) {
-              half = Math.ceil(half / 2);
-              i = i - half;
-              recursive(i);
-          } else if (num > arr[index]) {
-              half = Math.ceil(half / 2);
-              i = i + half;
-              // console.log(`> half: ${half} i: ${i}`);
-              recursive(i);
-          } else {
-              console.log("Something is wrong!");
-          }
-      };
-      recursive(i);
-			
-		};
-		biSearch(numTest, arrTest);
-
-S = 3 = 1
+...Under construction...
 ### Time complexity: O(n)
 #### Explanation:
-    let i = Math.floor((arr.length - 1) / 2); -> 1
-    let half = i;  -> 1
-
-    const recursive = (index) => { -> 1
-        if (num === arr[index]) { -> 1
-            console.log(`Found in index ${index}`); -> 1
-        } else if (num < arr[index]) { -> 1
-            half = Math.ceil(half / 2); -> 1
-            i = i - half; -> 1
-            recursive(i); -> n
-        } else if (num > arr[index]) { -> 1
-            half = Math.ceil(half / 2); -> 1
-            i = i + half; -> 1
-            recursive(i); -> n
-        } else { -> 1
-            console.log("Something is wrong!"); -> 1
-        }
-    };
-    recursive(i); -> 1
-		
-T = 12 + 2 * n = n
+...Under construction...
