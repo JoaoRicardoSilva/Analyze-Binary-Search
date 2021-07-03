@@ -1,51 +1,75 @@
 "use strick";
+// const { performance } = require("perf_hooks");
 
-const arrTest = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-];
-const numTest = 1;
+let input;
 
-const biSearch = (num, arr) => {
+const memoryA = [];
+const memoryB = [];
+
+const biSearch = (arr) => {
+    const num = arr[arr.length - 1];
     let ini = 0;
     let f = arr.length;
 
-    let count = 0; // Big O purpose
-
-    console.log({ num });
+    let tI = performance.now(); // For Big O purpose
+    console.log({ tI });
 
     while (ini <= f) {
         let i = Math.floor((f + ini) / 2);
 
         if (num === arr[i]) {
-            console.log({ count });
-            return console.log(`Found in index ${i}`);
+            let tF = performance.now();
+            console.log({ tF });
+            t = tF - tI;
+            console.log({ t });
+            memoryA.push({ x: t, y: arr.length });
+            console.log(`Found in index ${i}`);
+            break;
         } else if (num < arr[i]) {
-            count++;
             f = i - 1;
         } else if (num > arr[i]) {
-            count++;
             ini = i + 1;
         } else {
-            return console.log("Something is wrong!");
+            console.log("Something is wrong!");
+            break;
         }
     }
 };
-// biSearch(numTest, arrTest);
 
-const linearSearch = (num, arr) => {
-    let count = 0; // Big O purpose
+const linearSearch = (arr) => {
+    const num = arr[arr.length - 1];
     let i = 0;
+
+    let tI = performance.now(); // For Big O purpose
+    console.log({ tI });
 
     while (i <= arr.length - 1) {
         if (arr[i] === num) {
-            console.log({ count });
-            console.log(arr[i]);
+            let tF = performance.now();
+            console.log({ tF });
+            t = tF - tI;
+            console.log({ t });
+            memoryB.push({ x: t, y: arr.length });
         }
-        count++;
         i++;
     }
 };
 
-linearSearch(numTest, arrTest);
+const arrCreator = (arg, func) => {
+    for (let i = 0; i < arg.length; i++) {
+        let newArr = [];
+        let num = 0;
+        while (newArr.length < arg[i]) {
+            num++;
+            newArr.push(num);
+        }
+        func(newArr);
+    }
+};
+
+input = [
+    10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000,
+    5000000, 10000000, 50000000,
+];
+arrCreator(input, biSearch);
+arrCreator(input, linearSearch);
