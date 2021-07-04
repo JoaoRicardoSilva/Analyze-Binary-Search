@@ -5,15 +5,15 @@ console.log(memoryB);
 const data = {
     datasets: [
         {
-            label: "Binary Search time complexity",
+            label: "Binary Search",
             data: memoryA,
             backgroundColor: "rgb(55, 99, 132)",
         },
-        {
-            label: "Linear Search time complexity",
-            data: memoryB,
-            backgroundColor: "rgb(550, 99, 13)",
-        },
+        // {
+        //     label: "Linear Search",
+        //     data: memoryB,
+        //     backgroundColor: "rgb(550, 99, 13)",
+        // },
     ],
 };
 
@@ -24,25 +24,25 @@ const config = {
     options: {
         scales: {
             x: {
-                type: "linear",
                 position: "bottom",
-                title: {
-                    display: true,
-                    text: "Milliseconds",
-                },
-            },
-            y: {
-                type: "logarithmic",
                 title: {
                     display: true,
                     text: "Number of items",
                 },
             },
+            y: {
+                title: {
+                    display: true,
+                    text: "Milliseconds",
+                },
+            },
         },
-        plugins: { title: {
-            display: true,
-            text: "Binary Search vs Linear Search"
-        } },
+        plugins: {
+            title: {
+                display: true,
+                text: "Binary Search vs Linear Search",
+            },
+        },
     },
 };
 

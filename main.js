@@ -11,18 +11,18 @@ const biSearch = (arr) => {
     let ini = 0;
     let f = arr.length;
 
-    let tI = performance.now(); // For Big O purpose
+    const tI = performance.now(); // For Big O purpose
     console.log({ tI });
 
     while (ini <= f) {
         let i = Math.floor((f + ini) / 2);
 
         if (num === arr[i]) {
-            let tF = performance.now();
+            const tF = performance.now();
             console.log({ tF });
-            t = tF - tI;
+            const t = tF - tI;
             console.log({ t });
-            memoryA.push({ x: t, y: arr.length });
+            memoryA.push({ x: arr.length, y: t });
             console.log(`Found in index ${i}`);
             break;
         } else if (num < arr[i]) {
@@ -40,16 +40,16 @@ const linearSearch = (arr) => {
     const num = arr[arr.length - 1];
     let i = 0;
 
-    let tI = performance.now(); // For Big O purpose
+    const tI = performance.now(); // For Big O purpose
     console.log({ tI });
 
     while (i <= arr.length - 1) {
         if (arr[i] === num) {
-            let tF = performance.now();
+            const tF = performance.now();
             console.log({ tF });
-            t = tF - tI;
+            const t = tF - tI;
             console.log({ t });
-            memoryB.push({ x: t, y: arr.length });
+            memoryB.push({ x: arr.length, y: t });
         }
         i++;
     }
@@ -67,9 +67,6 @@ const arrCreator = (arg, func) => {
     }
 };
 
-input = [
-    10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000,
-    5000000, 10000000, 50000000,
-];
+input = [10, 50, 100, 50, 1000, 5000, 10000, 50000];
 arrCreator(input, biSearch);
 arrCreator(input, linearSearch);
