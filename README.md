@@ -12,24 +12,34 @@ A Javascript Binary Search algorithm and analyze its performance using Big O Not
 	* Time complexity
 
 ## How the algorithm works
-1. Create a function that receive two arguments: an array with sorted numbers (`arr`) and the number that we want to find (`num`)
-2. Define the start and the final index of arr
-3. Loop while `ini <= f`
-    * This condition will prevent an infinite loop if for some reason `ini` become bigger than `f`
-    * Create `i` that will be always a number in the middle of `ini` and `f`
-    * Then we have 3 options:
-        * `num === arr[i]`
-            * Stop the function and return the index
-        * `num < arr[i]`
-            * We need to analyse only the numbers on the left of `arr[i]`, therefore `ini` will be the same and `f` will be the immediate index below `i`
-        * `num > arr[i]`
-            * We need to analyse only the numbers on the right of `arr[i]`, therefore `f` will be the same and `ini` will be the immediate index above `i`
+
+1. arrCreator recive two arguments
+	* arr -> An array with numbers
+		* Each number will be transform in an array with sorted numbers, and with the length of the initial value.
+		* Example: [3, 7] -> [1, 2, 3] and [1, 2, 3, 4, 5, 6, 7]
+	* func -> A function
+		* biSearch or linearSearch
+
+2. biSearch()
+	1. Receive one arguments: the array with sorted numbers (`arr`)
+	2. Because the ideia of the exercicie is to analize the Big O, the number that we will find will be always the last value of the sorted array
+	3. Define the start and the final index of arr
+	4. Loop while `ini <= f`
+		* This condition will prevent an infinite loop if for some reason `ini` become bigger than `f`
+		* Create `i` that will be always a number in the middle of `ini` and `f`
+		* Then we have 3 options:
+			* `num === arr[i]`
+				* Stop the function and return the index
+			* `num < arr[i]`
+				* We need to analyse only the numbers on the left of `arr[i]`, therefore `ini` will be the same and `f` will be the immediate index below `i`
+			* `num > arr[i]`
+				* We need to analyse only the numbers on the right of `arr[i]`, therefore `f` will be the same and `ini` will be the immediate index above `i`
 
 ## Space and time complexity
 ### Space complexity O(1)
 Independent of the number of items in the arr, the number of varibles is always the same.
 
-`i` is define in the loop, therefore, in the end of with loop is cleared.
+`i` is define in the loop, therefore, in the end of with loop `i` is cleared.
 
 #### Explanation:
 |Number of items in `arr`|Number of variables created|
@@ -65,8 +75,6 @@ As the `arr` gets bigger, but for low values, the number of loops grows quickly,
 |10000|12|
 |50000|14|
 |100000|15|
-
-*Trying to find the last number of the array
 
 ![image](https://user-images.githubusercontent.com/62359670/123954046-d6b2c680-d99f-11eb-885b-dab25f6283f6.png)
 
